@@ -6,6 +6,10 @@ import Repositories from './Repositories';
 
 import { Container, Sidebar, Main } from './styles';
 
+import { getLangsFrom } from '../../services/api';
+
+// import Repository from './Repositories/Repository';
+
 const RepositoriesPage = () => {
   const user = {
     login: 'OdranoelGomes',
@@ -42,30 +46,23 @@ const RepositoriesPage = () => {
       name: 'Repo 4',
       description: 'Descrição',
       html_url: 'https://www.detalherj.com.br',
-      language: 'Ruby',
+      language: null,
     },
     {
       name: 'Repo 5',
       description: 'Descrição',
       html_url: 'https://www.detalherj.com.br',
-      language: 'Java',
+      language: 'TypeScript',
     },
     {
       name: 'Repo 6',
       description: 'Descrição',
       html_url: 'https://www.detalherj.com.br',
-      language: 'TypeScript',
+      language: 'Ruby',
     },
   ];
 
-  // Calculo dos Filters
-
-  const languages = [
-    { name: 'JavaScript', count: 3, color: '#f1c40f' },
-    { name: 'Shell', count: 2, color: '#95a5a6' },
-    { name: 'PHP', count: 2, color: '#3498db' },
-    { name: 'Ruby', count: 1, color: '#e74c3c' },
-  ];
+  const languages = getLangsFrom(repositories);
 
   return (
     <Container>
